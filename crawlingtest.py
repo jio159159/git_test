@@ -17,7 +17,7 @@ Spam_Lookup = soup.find("table", attrs={"class": "CB_Table"})
 #------------------------
 number = '010-4919-2952'
 session=requests.session()
-res=session.get(URL, params = number)
+res=session.get(URL, params = number) #get일땐 params , post일땐 data
 res.raise_for_status()
 print(res.headers)
 #------------------------
