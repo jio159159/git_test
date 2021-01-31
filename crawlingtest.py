@@ -2,7 +2,8 @@ import requests
 from selenium import webdriver
 from bs4 import BeautifulSoup
 
-def get_html(url): # requests모듈 공식 홈페이지에 나와있는 내용 
+
+def get_html(url): #URL함수
     _html = ""
     resp = requests.get(url)
     if resp.status_code == 200:
@@ -14,7 +15,7 @@ html = get_html(URL)
 soup = BeautifulSoup(html, 'html.parser')
 Spam_Lookup = soup.find("table", attrs={"class": "CB_Table"})
 
-#------------------------
+#------------------------ 수정 할 부분
 number = '010-4919-2952'
 session=requests.session()
 res=session.get(URL, params = number) #get일땐 params , post일땐 data

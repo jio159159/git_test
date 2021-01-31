@@ -29,7 +29,8 @@ report_scan_result = report.get('scans')
 report_scan_venders = list(report['scans'].keys())
 
 num = 1
-
+count = 0       #clean site 개수
+count2 = 0      #unrated site 개수
 # URL 점검 결과 리포트 조회하기
 # 점검 완료 메시지
 print(report.get('verbose_msg'), '\n')
@@ -41,6 +42,17 @@ print('Scan Date (UTC) : ', report_scan_date)
 for vender in report_scan_venders:
     outputs = report_scan_result[vender]
     outputs_keys = report_scan_result[vender].get('result')
-
     print('No', num, 'Vender Name :', vender, ', Scan Result :', outputs_keys)
     num = num + 1
+    if outputs_keys == 'clean site' :
+        count = count + 1
+    if outputs_keys == 'unrated site' :
+        count2 = count2 + 1
+       
+       
+print('clean site = ' , + count)
+print('unrated site = ' , + count2)
+
+#if outputs_keys == 'unrated site'
+#    count = count + 1
+#    print(count)
