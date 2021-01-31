@@ -9,7 +9,7 @@ import pandas as pd
 URL = "http://www.missed-call.com/"
 
 # Phon Number 입력
-num = '02-2138-0619'
+num = '15881688'
 #옵션 설정
 options = webdriver.ChromeOptions()
 options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -20,20 +20,19 @@ driver = webdriver.Chrome('/Users/Public/chromedriver_win32/chromedriver', optio
 
 driver.get(URL)
 
-
 driver.find_element_by_name('pnum').send_keys(num)
 driver.find_element_by_xpath('//*[@id="submitButton"]').click()
 time.sleep(3)
 
 req = driver.page_source
 soup = BeautifulSoup(req, 'html.parser')
-#Spam_Lookup = soup.find("table", attrs={"class": "CB_Table"})
-Spam_Lookup = soup.find('span', id='result_is_spam')
-print(Spam_Lookup.text)
-#trs = Spam_Lookup.find_all('tr')
-#for x in enumerate(trs):
-#    tds = x.find.all('td').text
 
-#print(tds)
+Spam_Lookup = soup.find('span', id='result_is_spam')
+test = Spam_Lookup.text
+print(test)
+
+
+
+
 
 
