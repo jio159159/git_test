@@ -11,10 +11,10 @@ def get_html(url): #URL함수
     return _html
 
 URL = "http://www.missed-call.com/"
-html = get_html(URL) 
+html = get_html(URL)
 soup = BeautifulSoup(html, 'html.parser')
 Spam_Lookup = soup.find("table", attrs={"class": "CB_Table"})
-
+print(Spam_Lookup)
 #------------------------ 수정 할 부분
 number = '010-4919-2952'
 session=requests.session()
@@ -29,5 +29,5 @@ from html_table_parser import parser_functions as parser
 import pandas as pd
 html_table = parser.make2d(Spam_Lookup)
 df=pd.DataFrame(html_table[2:], columns=html_table[0])
-print(df)
+#print(df)
 

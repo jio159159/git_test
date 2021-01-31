@@ -49,10 +49,5 @@ for vender in report_scan_venders:
     if outputs_keys == 'unrated site' :
         count2 = count2 + 1
        
-       
-print('clean site = ' , + count)
-print('unrated site = ' , + count2)
-
-#if outputs_keys == 'unrated site'
-#    count = count + 1
-#    print(count)
+print('clean site = ' ,+count, end=' ,')
+print(' unrated site = ' ,+count2)
