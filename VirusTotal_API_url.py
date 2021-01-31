@@ -44,9 +44,9 @@ for vender in report_scan_venders:
     outputs_keys = report_scan_result[vender].get('result')
     print('No', num, 'Vender Name :', vender, ', Scan Result :', outputs_keys)
     num = num + 1
-    if outputs_keys == 'clean site' :
+    if outputs_keys == 'clean site' :       #clean site 개수
         count = count + 1
-    if outputs_keys == 'unrated site' :
+    if outputs_keys == 'unrated site' :     #unrated site 개수
         count2 = count2 + 1
        
 print('clean site = ' ,+count, end=' ,')

@@ -1,15 +1,39 @@
+from urllib.parse import quote_plus    # 한글 텍스트를 퍼센트 인코딩으로 변환
+from selenium import webdriver    # 라이브러리에서 사용하는 모듈만 호출
+
+from bs4 import BeautifulSoup
 import time
+import pandas as pd
 
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.wait import WebDriverWait
+# url
+URL = "http://www.missed-call.com/"
 
-options = Options()
-options.headless = True
-browser = webdriver.Chrome(executable_path="./chromedriver.exe", options=options)
-browser.get("https://datalab.naver.com/shoppingInsight/sCategory.naver")
+# Phon Number 입력
+num = '02-2138-0619'
+#옵션 설정
+options = webdriver.ChromeOptions()
+options.add_experimental_option('excludeSwitches', ['enable-logging'])
+options.add_argument('headless')    # 웹 브라우저를 띄우지 않는 headless chrome 옵션 적용
+options.add_argument('disable-gpu')    # GPU 사용 안함
+options.add_argument('lang=ko_KR')    # 언어 설정
+driver = webdriver.Chrome('/Users/Public/chromedriver_win32/chromedriver', options=options)
 
+driver.get(URL)
+
+
+driver.find_element_by_name('pnum').send_keys(num)
+driver.find_element_by_xpath('//*[@id="submitButton"]').click()
 time.sleep(3)
-tag_names = browser.find_element_by_css_selector(".rank_top1000_list").find_elements_by_tag_name("li")
-for tag in tag_names:
-    print(tag.text.split("\n"))
+
+req = driver.page_source
+soup = BeautifulSoup(req, 'html.parser')
+#Spam_Lookup = soup.find("table", attrs={"class": "CB_Table"})
+Spam_Lookup = soup.find('span', id='result_is_spam')
+print(Spam_Lookup.text)
+#trs = Spam_Lookup.find_all('tr')
+#for x in enumerate(trs):
+#    tds = x.find.all('td').text
+
+#print(tds)
+
+
