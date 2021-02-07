@@ -29,8 +29,8 @@ report_scan_result = report.get('scans')
 report_scan_venders = list(report['scans'].keys())
 
 num = 1
-count = 0       #clean site 개수
-count2 = 0      #unrated site 개수
+count = 0       
+count2 = 0     
 # URL 점검 결과 리포트 조회하기
 # 점검 완료 메시지
 print(report.get('verbose_msg'), '\n')
