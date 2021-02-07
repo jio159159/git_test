@@ -3,7 +3,7 @@ from selenium import webdriver    # 라이브러리에서 사용하는 모듈만
 from bs4 import BeautifulSoup
 import time
 
-# url
+# 스팸 번호 스캔 주소
 URL = "http://www.missed-call.com/"
 
 # Phon Number 입력
@@ -28,7 +28,11 @@ req = driver.page_source
 soup = BeautifulSoup(req, 'html.parser')
 # span이라는 class의 id 내용을 Spam_Lookup에 저장
 Spam_Lookup = soup.find('span', id='result_is_spam')
-# Spam_Lookup 내용을 text로만 출력
+# Spam_Lookup text로 출력하는 내용을 Spam_Level에 저장
 Spam_Level = Spam_Lookup.text
-print(Spam_Level)
-#print(Spam_Level[-7: ])
+
+# 전체 출력
+#print(Spam_Level)
+
+# 레벨만 출력
+print(Spam_Level[-7: ])
