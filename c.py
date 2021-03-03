@@ -4,9 +4,12 @@ from bs4 import BeautifulSoup
 import time
 
 def missed_call(Pn):
-    # 스팸 번호 스캔할 주소
+    # 스팸 번호 스캔 주소
     URL = "http://www.missed-call.com/"
 
+    # Phon Number 입력
+    #Pn = input("번호입력:")
+    #Pn = '49192952'
     ######옵션 설정######
     options = webdriver.ChromeOptions()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
@@ -29,14 +32,30 @@ def missed_call(Pn):
     Spam_Lookup = soup.find('span', id='result_is_spam')
     # Spam_Lookup text로 출력하는 내용을 Spam_Level에 저장
     Spam_Level = Spam_Lookup.text
-    Spam_Number = int(Spam_Level[-2:-1])
-    
     # 0단계에서 2단계까지는 정상 3단계 이후로는 스팸번호로 저장
-    if Spam_Number < 3 :
+    if Spam_Level[-2:-1] == str(0) :
         result = 0
-    else :
+    if Spam_Level[-2:-1] == str(1) :
+        result = 0
+    if Spam_Level[-2:-1] == str(2) :
+        result = 0
+    if Spam_Level[-2:-1] == str(3) :
         result = 1
-    
+    if Spam_Level[-2:-1] == str(4) :
+        result = 1
+    if Spam_Level[-2:-1] == str(5) :
+        result = 1
+    if Spam_Level[-2:-1] == str(6) :
+        result = 1
+    if Spam_Level[-2:-1] == str(7) :
+        result = 1
+    if Spam_Level[-2:-1] == str(8) :
+        result = 1
+    if Spam_Level[-2:-1] == str(9) :
+        result = 1
+    if Spam_Level[-2:-1] == str(10) :
+        result = 1
+
     return print(result)
 
-#missed_call('49192952')
+#missed_call('15881688')
