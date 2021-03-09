@@ -60,9 +60,9 @@ def VirusTotal_url(my_url):
 
     # malicious site 나 malware site가 하나라도 존재할경우 악성URL 그 외 정상URL
     if malicious_count > 0 or malware_count > 0:
-        result = 1
+        result = 1  #악성
     else :
-        result = 0
+        result = 0  #정상
 
     return print(result)
 #VirusTotal_url('http://27.208.8.213:36612/Mozi.m')
